@@ -6,8 +6,8 @@ group = "com.github.avro-kotlin.avro4k"
 
 mavenPublishing {
     publishToMavenCentral(automaticRelease = true)
-    // do not sign local builds
-    if (version != "local-SNAPSHOT") {
+    // do not sign local builds or DCA-internal forks (no signing keys available)
+    if (version != "local-SNAPSHOT" && !version.toString().contains("-dca")) {
         signAllPublications()
     }
 }
